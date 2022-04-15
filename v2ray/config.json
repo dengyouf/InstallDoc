@@ -1,0 +1,37 @@
+{
+    "inbounds": [
+      {
+        "protocol": "socks",
+        "port": 6688,
+        "settings": {
+          "auth": "noauth",
+          "accounts": [],
+          "udp": false,
+          "ip": "127.0.0.1",
+          "userLevel": 0
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom",
+        "settings": {}
+      },
+      {
+        "protocol": "blackhole",
+        "settings": {},
+        "tag": "blocked"
+      }
+    ],
+    "routing": {
+      "rules": [
+        {
+          "type": "field",
+          "ip": [
+            "geoip:private"
+          ],
+          "outboundTag": "blocked"
+        }
+      ]
+    }
+  }
